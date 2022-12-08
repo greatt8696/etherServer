@@ -45,28 +45,29 @@ class TransactionManager {
       console.log("@@@BEGIN@@ : ", result);
     });
   };
-
-  autoContractTanscation = (instance) => {
-    let i = 0;
-    while (i < 10) {
-      setTimeout(async () => {
-        console.log("autoContractTanscation running");
-        const method = await instance.methods.foo("11111", "11111").send({
-          from: FROM,
-        });
-        console.log(i);
-        i++;
-      }, 3000);
-    }
-  };
 }
 
 const getAllBlocks = async () => blocksFromWeb3(web3);
 
 const getTransactionManager = async () => new TransactionManager(web3);
 
+const autoContractTanscation = async (web3, loopSize = 10, duration = 3000) => {
+  const instance = await new web3.eth.Contract(Contract.abi, CA);
+
+  for (let index = 0; index < loopSize; index++) {
+    setTimeout(async () => {
+      console.log("autoContractTanscation running");
+      const method = await instance.methods.foo("11111", "11111").send({
+        from: FROM,
+      });
+      console.log(index);
+    }, duration);
+  }
+};
+
 module.exports = {
   web3,
   getAllBlocks,
   getTransactionManager,
+  autoContractTanscation,
 };

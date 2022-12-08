@@ -4,7 +4,12 @@ const mongoDb = require("mongoose");
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const { web3, getAllBlocks, getTransactionManager } = require("./web3Manager");
+const {
+  web3,
+  getAllBlocks,
+  getTransactionManager,
+  autoContractTanscation,
+} = require("./web3Manager");
 
 app.use(
   cors({
@@ -17,4 +22,5 @@ app.use(
   const blocks = await getAllBlocks();
   // console.log(blocks);
   const transactionManager = await getTransactionManager();
+  autoContractTanscation(web3);
 })();
