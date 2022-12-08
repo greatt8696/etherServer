@@ -8,6 +8,18 @@ router.get("/getBlocks", async (req, res) => {
   res.send(allBlockFromWeb3);
 });
 
+router.get("/getBlock/:number", async (req, res) => {
+  const { number } = req.params;
+  const allBlockFromWeb3 = await getAllBlocks();
+  res.send(allBlockFromWeb3[number]);
+});
+
+router.get("/getBlock/:number", async (req, res) => {
+  const { number } = req.params;
+  const allBlockFromWeb3 = await getAllBlocks();
+  res.send(allBlockFromWeb3[number]);
+});
+
 router.get("/getEvent", async (req, res) => {
   res.send(event);
 });

@@ -60,7 +60,7 @@ const autoContractTanscation = async (web3, loopSize = 10, duration = 3000) => {
       const method = await instance.methods.foo("11111", "11111").send({
         from: FROM,
       });
-      console.log(index);
+      console.log(method);
     }, duration);
   }
 };
