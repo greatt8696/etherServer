@@ -1,4 +1,4 @@
-[
+module.exports = [
   {
     number: 21,
     hash: "0xa949150d829c4619f9509f01530b80ddfe95005aeb7164d03cb1a3f79032e9bb",
