@@ -1,0 +1,14 @@
+{
+  "image": "ipfs://QmUs4WQP47QKGwzPLjVMmhqTbspJfAC344abDEE2UT52HF/6576.png",
+  "name": "Sappy Seal #6576",
+  "edition": 6576,
+  "attributes": [
+    { "trait_type": "background", "value": "Orange" },
+    { "trait_type": "skin", "value": "Cream" },
+    { "trait_type": "face", "value": "Happy Face" },
+    { "trait_type": "body", "value": "White Vest" },
+    { "trait_type": "head", "value": "Red Durag" },
+    { "trait_type": "extra", "value": "404 Vr" },
+    { "trait_type": "extra", "value": "None" }
+  ]
+}
