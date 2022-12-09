@@ -3,7 +3,7 @@ const Web3 = require("web3");
 const FROM = "0x879F90de3f5E39567be8C090a33219d30d5EC33e"; // 첫번째 계정
 const CA = "0x9Bae0edfA21976f5b5476B4d295a0fE1C14D3E36";
 const Contract = require("../contracts/Test.json");
-const { Transaction } = require("../models");
+const { Transaction, Block } = require("../models");
 // setInterval(async () => {
 //   web3.eth.getAccounts(console.log);
 //   const blockNum = await web3.eth.getBlockNumber();
@@ -55,8 +55,9 @@ class TransactionManager {
         blockHeader["transactions"] = [];
         console.log("@@newBlockHeaders=>transaction@@ : ", blockHeader);
         const getLatestBlock = await web3.eth.getBlock("latest", true);
+        await Block.insertBlock(getLatestBlock);
         getLatestBlock.transactions.forEach(async (transaction) => {
-          console.log("newTransaction", transaction);
+          console.log("Transaction:newTransaction", transaction);
           await Transaction.insertTransaction(transaction);
         });
       })
@@ -67,7 +68,7 @@ class TransactionManager {
       async (err, result) => {
         console.log("@@@BEGIN@@ : ", result);
         const newTransaction = await new web3.eth.getTransaction(result.hash);
-        console.log("newTransaction", newTransaction);
+
         await Transaction.insertTransaction(newTransaction);
         // console.log("@@@BEGIN@@ : ", JSON.stringify(result));
       }
