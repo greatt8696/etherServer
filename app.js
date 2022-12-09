@@ -1,32 +1,24 @@
 require("dotenv").config();
 
-const mongoDb = require("mongoose");
 const express = require("express");
 const app = express();
 const cors = require("cors");
 const ether = require("./routers/ether");
+const web3Manager = require("./web3/web3Manager");
+const { connectDb, initDb } = require("./models");
 
-const {
-  web3,
-  getAllBlocks,
-  getTransactionManager,
-  autoContractTanscation,
-} = require("./web3Manager");
-
-// Web3 init
+// mongoDb and Web3 init
 (async () => {
-  const blocks = await getAllBlocks();
-  // console.log(blocks);
-  const transactionManager = await getTransactionManager();
-  autoContractTanscation(web3);
+  const transactionManager = await web3Manager.getTransactionManager();
+  transactionManager.init();
+  web3Manager.autoContractTanscation();
+
+  connectDb().then(() => {
+    // initDb(web3Manager);
+  });
 })();
 
-app.use(
-  cors({
-    origin: "*",
-    credentials: false,
-  })
-);
+app.use(cors({ origin: "*", credentials: false }));
 
 app.use(express.static("public"));
 

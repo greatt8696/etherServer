@@ -1,0 +1,37 @@
+{
+  "animation_url": "https://drive.polychainmonsters.com/ipfs/QmPkU6h6LmxfYJ81WBj9GJhzmRAGZk8WmTvXM5MmcU8ZY8",
+  "attributes": [
+    { "trait_type": "attack", "value": "100" },
+    { "trait_type": "defence", "value": "120" },
+    { "trait_type": "speed", "value": "130" },
+    {
+      "display_type": "number",
+      "trait_type": "Booster",
+      "value": 10000000130909
+    },
+    { "trait_type": "Rarity Points", "value": 2.504 },
+    { "trait_type": "Origin Chain", "value": "BNB Chain" }
+  ],
+  "background_color": "FFFFFF",
+  "boosterId": 10000000130909,
+  "description": "The Unidonkey is quite skittish and reserved, but there is much power in their potential. Adored by even the smallest of hearts, its canter gives a calm rhythm to all eyes and ears.",
+  "external_url": "https://polkamon.com/polkamon/T01C02H06B04G00",
+  "id": "10000392725",
+  "image": "https://drive.polychainmonsters.com/ipfs/QmWJxAjL8xmPxcYbp1vWzhHC3shD7b4BoWq23nycqu2Uva",
+  "code": "T01C02H06B04G00",
+  "initialProbabilities": {
+    "horn": 0.2,
+    "color": 0.345,
+    "background": 1,
+    "glitter": 0.99,
+    "type": 0.19
+  },
+  "name": "Unidonkey",
+  "txHash": "0xb77ebef437d18a7bdcd14c847492872f2bbbc058a61490e03b32a0a78cc0c440",
+  "chain": "bsc",
+  "chainGroup": "BSC",
+  "nftContract": "polychainmonsters",
+  "opening_network": "Binance Smart Chain",
+  "rarity": 2.504,
+  "rarityCapped": 2.504
+}
