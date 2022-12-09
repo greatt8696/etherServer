@@ -51,9 +51,14 @@ class TransactionManager {
       .on("connected", function (subscriptionId) {
         console.log(subscriptionId);
       })
-      .on("data", function (blockHeader) {
+      .on("data", async function (blockHeader) {
         blockHeader["transactions"] = [];
-        console.log("@@data@@ : ", blockHeader);
+        console.log("@@newBlockHeaders=>transaction@@ : ", blockHeader);
+        const getLatestBlock = await web3.eth.getBlock("latest", true);
+        getLatestBlock.transactions.forEach(async (transaction) => {
+          console.log("newTransaction", transaction);
+          await Transaction.insertTransaction(transaction);
+        });
       })
       .on("error", console.error);
 

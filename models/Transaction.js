@@ -24,11 +24,16 @@ transactionSchema.statics.insertTransactions = function (transactions) {
 
 transactionSchema.statics.insertTransaction = async function (transaction) {
   console.log("@@@@@@@@@@@@@@@@", transaction);
+  if (transaction === null || !transaction.length) return;
   const isExist = await this.find({ hash: transaction.hash });
-  if (!!isExist) {
-    console.log("transactionSchema.statics.insertTransaction: isExist");
+  if (!isExist.length) {
+    console.log(
+      "transactionSchema.statics.insertTransaction: isExist",
+      isExist
+    );
     return;
   }
+  console.log("newTransaction", transaction);
   return this.create(transaction);
 };
 
