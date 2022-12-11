@@ -1,0 +1,376 @@
+{
+  "id": 1354831,
+  "name": "🦇💕🌈 🦇💕 🌈💕🦇",
+  "generation": 12,
+  "created_at": "2019-01-23T04:56:45.000Z",
+  "birthday": "2019-01-23T00:00:00.000Z",
+  "image_url": "https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1354831.svg",
+  "image_url_cdn": "https://img.cn.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1354831.svg",
+  "color": "topaz",
+  "background_color": "#d1eeeb",
+  "bio": "Shalom. You may call me 🦇💕🌈 🦇💕 🌈💕🦇. I always thought I'd be a great Social Media Influencer, except I'm not lawful enough. Want to start a band together? Dibs bass!",
+  "kitty_type": null,
+  "is_fancy": false,
+  "is_exclusive": false,
+  "is_special_edition": false,
+  "fancy_type": null,
+  "language": "en",
+  "is_prestige": false,
+  "prestige_type": null,
+  "prestige_ranking": null,
+  "prestige_time_limit": null,
+  "status": {
+    "is_ready": true,
+    "is_gestating": false,
+    "cooldown": 1526295821551,
+    "dynamic_cooldown": 1562218039714,
+    "cooldown_index": 7,
+    "cooldown_end_block": 7170083,
+    "pending_tx_type": null,
+    "pending_tx_since": null
+  },
+  "purrs": { "count": 3, "is_purred": false },
+  "watchlist": { "count": 0, "is_watchlisted": false },
+  "hatcher": {
+    "address": "0x9f60aa00b6531291702d0e1892ab31d5c150661c",
+    "image": "4",
+    "nickname": "🛕NFTrimurti.eth🛕",
+    "hasDapper": false,
+    "twitter_id": "1459994995100897290",
+    "twitter_image_url": "https://pbs.twimg.com/profile_images/1554537544397766658/tWJ9HxfL_bigger.jpg",
+    "twitter_handle": "NFTrimurti"
+  },
+  "auction": {},
+  "offer": {},
+  "owner": {
+    "address": "0x4b5495685002c7630858e68a3bbe4bf5c7f39675",
+    "hasDapper": false,
+    "twitter_id": null,
+    "twitter_image_url": null,
+    "twitter_handle": null,
+    "image": "12",
+    "nickname": "NFTrimurti - Kitty Mill"
+  },
+  "matron": {
+    "id": 1354743,
+    "name": "Kira Scuttlekey",
+    "generation": 11,
+    "enhanced_cattributes": [
+      {
+        "type": "body",
+        "kittyId": 1354743,
+        "position": -1,
+        "description": "himalayan"
+      },
+      {
+        "type": "eyes",
+        "kittyId": 1354743,
+        "position": -1,
+        "description": "crazy"
+      },
+      {
+        "type": "pattern",
+        "kittyId": 1163773,
+        "position": 74,
+        "description": "allyouneed"
+      },
+      {
+        "type": "mouth",
+        "kittyId": 962977,
+        "position": 2018,
+        "description": "rollercoaster"
+      },
+      {
+        "type": "colorprimary",
+        "kittyId": 1235441,
+        "position": 529,
+        "description": "glacier"
+      },
+      {
+        "type": "colorsecondary",
+        "kittyId": 803471,
+        "position": 6261,
+        "description": "scarlet"
+      },
+      {
+        "type": "colortertiary",
+        "kittyId": 500945,
+        "position": 2010,
+        "description": "belleblue"
+      },
+      {
+        "type": "coloreyes",
+        "kittyId": 1354743,
+        "position": -1,
+        "description": "topaz"
+      }
+    ],
+    "owner_wallet_address": "0xc7af99fe5513eb6710e6d5f44f9989da40f27f26",
+    "owner": { "address": "0xc7af99fe5513eb6710e6d5f44f9989da40f27f26" },
+    "created_at": "2019-01-23T02:47:20.000Z",
+    "image_url": "https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1354743.svg",
+    "image_url_cdn": "https://img.cn.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1354743.svg",
+    "color": "topaz",
+    "is_fancy": false,
+    "kitty_type": null,
+    "is_exclusive": false,
+    "is_special_edition": false,
+    "fancy_type": null,
+    "status": {
+      "is_ready": true,
+      "is_gestating": false,
+      "cooldown": 1525339521039
+    },
+    "hatched": true,
+    "wrapped": true,
+    "image_url_png": "https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1354743.png"
+  },
+  "sire": {
+    "id": 1352961,
+    "name": "Ginger Ahemrubin",
+    "generation": 10,
+    "enhanced_cattributes": [
+      {
+        "type": "coloreyes",
+        "kittyId": 1174170,
+        "position": 511,
+        "description": "pinefresh"
+      },
+      {
+        "type": "eyes",
+        "kittyId": 533246,
+        "position": 4791,
+        "description": "raisedbrow"
+      },
+      {
+        "type": "mouth",
+        "kittyId": 430840,
+        "position": 2024,
+        "description": "gerbil"
+      },
+      {
+        "type": "body",
+        "kittyId": 1139745,
+        "position": 548,
+        "description": "siberian"
+      },
+      {
+        "type": "pattern",
+        "kittyId": 1166344,
+        "position": 89,
+        "description": "allyouneed"
+      },
+      {
+        "type": "wild",
+        "kittyId": 1196885,
+        "position": 108,
+        "description": "wyrm"
+      },
+      {
+        "type": "colorprimary",
+        "kittyId": 969917,
+        "position": 459,
+        "description": "onyx"
+      },
+      {
+        "type": "colorsecondary",
+        "kittyId": 1352961,
+        "position": -1,
+        "description": "swampgreen"
+      },
+      {
+        "type": "colortertiary",
+        "kittyId": 500945,
+        "position": 2010,
+        "description": "belleblue"
+      },
+      {
+        "type": "environment",
+        "kittyId": 1296269,
+        "position": 291,
+        "description": "roadtogold"
+      }
+    ],
+    "owner_wallet_address": "0x4f69adc8857eefde0befbe137b739a2f28d88e6e",
+    "owner": { "address": "0x4f69adc8857eefde0befbe137b739a2f28d88e6e" },
+    "created_at": "2019-01-21T13:45:00.000Z",
+    "image_url": "https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1352961.svg",
+    "image_url_cdn": "https://img.cn.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1352961.svg",
+    "color": "pinefresh",
+    "is_fancy": false,
+    "is_exclusive": false,
+    "is_special_edition": false,
+    "fancy_type": null,
+    "status": {
+      "is_ready": true,
+      "is_gestating": false,
+      "cooldown": 1591736721557
+    },
+    "kitty_type": null,
+    "hatched": true,
+    "wrapped": true,
+    "image_url_png": "https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1352961.png"
+  },
+  "children": [
+    {
+      "id": 1374206,
+      "name": "Goya Ahemsmookie",
+      "generation": 13,
+      "enhanced_cattributes": [
+        {
+          "type": "mouth",
+          "kittyId": 868345,
+          "position": 11,
+          "description": "walrus"
+        },
+        {
+          "type": "pattern",
+          "kittyId": 333199,
+          "position": 27,
+          "description": "amur"
+        },
+        {
+          "type": "eyes",
+          "kittyId": 964844,
+          "position": 13,
+          "description": "candyshoppe"
+        },
+        {
+          "type": "body",
+          "kittyId": 1101703,
+          "position": 69,
+          "description": "siberian"
+        },
+        {
+          "type": "wild",
+          "kittyId": 1196885,
+          "position": 108,
+          "description": "wyrm"
+        },
+        {
+          "type": "colorprimary",
+          "kittyId": 468373,
+          "position": 30,
+          "description": "onyx"
+        },
+        {
+          "type": "colorsecondary",
+          "kittyId": 505920,
+          "position": 13,
+          "description": "egyptiankohl"
+        },
+        {
+          "type": "colortertiary",
+          "kittyId": 482479,
+          "position": 5,
+          "description": "purplehaze"
+        },
+        {
+          "type": "coloreyes",
+          "kittyId": 1374206,
+          "position": -1,
+          "description": "chestnut"
+        }
+      ],
+      "owner_wallet_address": "0x760ba77ff8105c0333fd9f84f2725c6431775959",
+      "owner": { "address": "0x760ba77ff8105c0333fd9f84f2725c6431775959" },
+      "created_at": "2019-02-03T20:47:19.000Z",
+      "image_url": "https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1374206.svg",
+      "image_url_cdn": "https://img.cn.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1374206.svg",
+      "color": "chestnut",
+      "is_fancy": false,
+      "is_exclusive": false,
+      "is_special_edition": false,
+      "kitty_type": null,
+      "fancy_type": null,
+      "status": {
+        "is_ready": true,
+        "is_gestating": false,
+        "cooldown": 1527603278291
+      },
+      "hatched": true,
+      "wrapped": true,
+      "image_url_png": "https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1374206.png"
+    }
+  ],
+  "hatched": true,
+  "wrapped": true,
+  "enhanced_cattributes": [
+    {
+      "type": "colorprimary",
+      "description": "onyx",
+      "position": 430,
+      "kittyId": 856950
+    },
+    {
+      "type": "coloreyes",
+      "description": "topaz",
+      "position": null,
+      "kittyId": 1354831
+    },
+    {
+      "type": "environment",
+      "description": "roadtogold",
+      "position": 291,
+      "kittyId": 1296269
+    },
+    {
+      "type": "body",
+      "description": "siberian",
+      "position": 69,
+      "kittyId": 1101703
+    },
+    {
+      "type": "colorsecondary",
+      "description": "scarlet",
+      "position": 6261,
+      "kittyId": 803471
+    },
+    {
+      "type": "mouth",
+      "description": "rollercoaster",
+      "position": 2018,
+      "kittyId": 962977
+    },
+    {
+      "type": "pattern",
+      "description": "allyouneed",
+      "position": 74,
+      "kittyId": 1163773
+    },
+    {
+      "type": "eyes",
+      "description": "crazy",
+      "position": null,
+      "kittyId": 1354831
+    },
+    {
+      "type": "colortertiary",
+      "description": "belleblue",
+      "position": 2010,
+      "kittyId": 500945
+    },
+    {
+      "type": "wild",
+      "description": "wyrm",
+      "position": 108,
+      "kittyId": 1196885
+    },
+    {
+      "type": "secret",
+      "description": "se15",
+      "position": -1,
+      "kittyId": 1354831
+    },
+    {
+      "type": "purrstige",
+      "description": "pu13",
+      "position": -1,
+      "kittyId": 1354831
+    }
+  ],
+  "variation": null,
+  "variation_ranking": null,
+  "image_url_png": "https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1354831.png",
+  "items": []
+}
