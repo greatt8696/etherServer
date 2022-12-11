@@ -6,6 +6,7 @@ const cors = require("cors");
 const ether = require("./routers/ether");
 const web3Manager = require("./web3/web3Manager");
 const { connectDb, initDb } = require("./models");
+const { SERVER_PORT } = process.env;
 
 // mongoDb and Web3 init
 (async () => {
@@ -14,7 +15,7 @@ const { connectDb, initDb } = require("./models");
   web3Manager.autoContractTanscation();
 
   connectDb().then(() => {
-    // initDb(web3Manager);
+    initDb(web3Manager);
   });
 })();
 
@@ -22,7 +23,7 @@ app.use(cors({ origin: "*", credentials: false }));
 
 app.use(express.static("public"));
 
-app.listen(3000, () => console.log("SERVER RUNNING"));
+app.listen(SERVER_PORT, () => console.log("SERVER RUNNING :", SERVER_PORT));
 
 app.use(express.json());
 
