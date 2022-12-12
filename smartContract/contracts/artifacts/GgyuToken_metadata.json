@@ -587,11 +587,11 @@
 			]
 		},
 		"contracts/GgyuToken.sol": {
-			"keccak256": "0xeb7339a43f9a2586cc777660ac1182074f6891fe4e8af9e56ed1386776d95627",
+			"keccak256": "0x7d37a75f8209abad9a391dc47831beb265cf71e7701ad5b1f2dca6594a58f54a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://59d34f787aa39b8c1585e836d0964e332946b21afdf9976e4c61d7476494de04",
-				"dweb:/ipfs/QmWJtgffVTcvJovbmWHdcN55XxWKDfrQcNFfsmXc3ip62y"
+				"bzz-raw://c3f19d10e1474f851514faa780e3b19f034678dfe8d659617d60cad744305ee5",
+				"dweb:/ipfs/QmWG9uTv7Cm2PCvdpMga4VkS78Et7RTT6TNWa7HNbTr9h7"
 			]
 		}
 	},

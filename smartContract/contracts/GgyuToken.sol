@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.17;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
@@ -40,9 +39,9 @@ contract GgyuToken is ERC20, ERC20Burnable, Ownable {
     }
 }
 
-// contract GgyuNFT is ERC721 {
-//     using Counters for Counters.Counter;
-//     Counters.Counter private _tokenIds;
+contract GgyuNFT is ERC721 {
+    using Counters for Counters.Counter;
+    Counters.Counter private _tokenIds;
 
-//     constructor() ERC721("GgyuNFT", "GGF") {}
-// }
+    constructor() ERC721("GgyuNFT", "GGF") {}
+}
