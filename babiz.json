@@ -1,0 +1,26 @@
+{
+  "name": "#6240 hi",
+  "description": "Generation 1 Series 2 Female Pup. Original art by: Mr.072 (mr.zeroseventwo@gmail.com)",
+  "external_url": "https://www.myfatbabiz.world/babiz/6240",
+  "image": "https://www.myfatbabiz.world/babiz/media/6240",
+  "attributes": [
+    { "trait_type": "gender", "value": "female" },
+    { "display_type": "number", "trait_type": "generation", "value": 1 },
+    { "display_type": "number", "trait_type": "series", "value": 2 },
+    { "display_type": "number", "trait_type": "serial", "value": 6240 },
+    { "display_type": "number", "trait_type": "ranking", "value": 57 },
+    { "trait_type": "level", "value": "Epic" },
+    { "trait_type": "base_color", "value": "Lavender Blush" },
+    { "trait_type": "point_color", "value": "Silver 2" },
+    { "trait_type": "eye_color", "value": "Kunzite" },
+    { "trait_type": "tail", "value": "Fox Up 5" },
+    { "trait_type": "leg_pattern", "value": "Spot 15" },
+    { "trait_type": "hair_length", "value": "Long Hair 4" },
+    { "trait_type": "body_pattern", "value": "Husky 5" },
+    { "trait_type": "ear", "value": "Doberman Middle 1" },
+    { "trait_type": "face_pattern", "value": "Zebra 1" },
+    { "trait_type": "eye", "value": "Half Moon" },
+    { "trait_type": "nose", "value": "Tiny Circle" },
+    { "trait_type": "mouth", "value": "Woof" }
+  ]
+}

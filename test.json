@@ -1,54 +1,26 @@
 {
-  "image": "ipfs://QmUs4WQP47QKGwzPLjVMmhqTbspJfAC344abDEE2UT52HF/6576.png",
-  "name": "Sappy Seal #6576",
-  "edition": 6576,
+  "name": "#0 072",
+  "description": "Generation 1 Male Founder. Original art by: Mr.072 (mr.zeroseventwo@gmail.com)",
+  "external_url": "https://www.myfatbabiz.world/babiz/0",
+  "image": "https://www.myfatbabiz.world/babiz/media/0",
   "attributes": [
-    { "trait_type": "background", "value": "Orange" },
-    { "trait_type": "skin", "value": "Cream" },
-    { "trait_type": "face", "value": "Happy Face" },
-    { "trait_type": "body", "value": "White Vest" },
-    { "trait_type": "head", "value": "Red Durag" },
-    { "trait_type": "extra", "value": "404 Vr" },
-    { "trait_type": "extra", "value": "None" }
-  ],
-  "msg": {
-    "logIndex": 1,
-    "transactionIndex": 0,
-    "transactionHash": "0xfd337c49d85063ad248a75ed39fa1f135d696c1b0f8ef9e443b5dfbf29412e63",
-    "blockHash": "0x7b4e28c590ebf04e4d949698f59dd1d9979b9200536468dc68e20ffab8c55608",
-    "blockNumber": 202,
-    "address": "0x9Bae0edfA21976f5b5476B4d295a0fE1C14D3E36",
-    "type": "mined",
-    "id": "log_a5000d08",
-    "returnValues": { "0": "11111", "1": "11111", "b": "11111", "c": "11111" },
-    "event": "Event2",
-    "signature": "0x726e075612740c287aa930f020f76fa8fe6c8560bd6056644a191a48569f7f31",
-    "raw": {
-      "data": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000053131313131000000000000000000000000000000000000000000000000000000",
-      "topics": [
-        "0x726e075612740c287aa930f020f76fa8fe6c8560bd6056644a191a48569f7f31",
-        "0x0000000000000000000000000000000000000000000000000000000000002b67"
-      ]
-    }
-  },
-  "msg1": {
-    "logIndex": 0,
-    "transactionIndex": 0,
-    "transactionHash": "0xfd337c49d85063ad248a75ed39fa1f135d696c1b0f8ef9e443b5dfbf29412e63",
-    "blockHash": "0x7b4e28c590ebf04e4d949698f59dd1d9979b9200536468dc68e20ffab8c55608",
-    "blockNumber": 202,
-    "address": "0x9Bae0edfA21976f5b5476B4d295a0fE1C14D3E36",
-    "type": "mined",
-    "id": "log_3f2ec143",
-    "returnValues": { "0": "11111", "1": "11111", "b": "11111", "c": "11111" },
-    "event": "Event",
-    "signature": "0xac226a886beee08bc5b48547d34b08a8fecbacbed6a7ec64af2820a137d6f8b4",
-    "raw": {
-      "data": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000053131313131000000000000000000000000000000000000000000000000000000",
-      "topics": [
-        "0xac226a886beee08bc5b48547d34b08a8fecbacbed6a7ec64af2820a137d6f8b4",
-        "0x0000000000000000000000000000000000000000000000000000000000002b67"
-      ]
-    }
-  }
+    { "trait_type": "gender", "value": "male" },
+    { "display_type": "number", "trait_type": "generation", "value": 1 },
+    { "display_type": "number", "trait_type": "series", "value": 0 },
+    { "display_type": "number", "trait_type": "serial", "value": 0 },
+    { "display_type": "number", "trait_type": "ranking", "value": 143 },
+    { "trait_type": "level", "value": "Legendary" },
+    { "trait_type": "base_color", "value": "Ghost White" },
+    { "trait_type": "point_color", "value": "Black 2" },
+    { "trait_type": "eye_color", "value": "Pyrope" },
+    { "trait_type": "tail", "value": "Poodle 5" },
+    { "trait_type": "leg_pattern", "value": "Kiss" },
+    { "trait_type": "hair_length", "value": "Long Hair 5" },
+    { "trait_type": "body_pattern", "value": "Kiss" },
+    { "trait_type": "ear", "value": "Horn" },
+    { "trait_type": "face_pattern", "value": "Kiss" },
+    { "trait_type": "eye", "value": "Husky Orange" },
+    { "trait_type": "nose", "value": "Ring" },
+    { "trait_type": "mouth", "value": "Wide Mouth Tongue" }
+  ]
 }

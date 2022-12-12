@@ -34,7 +34,7 @@ contract GgyuToken is ERC20, ERC20Burnable, Ownable {
         require(balanceOf(_msgSender()) >= tokenAmount, "not");
         uint256 _etherAmount = tokenAmount / _exchangeRate;
         burn(tokenAmount);
-        emit withdrawalEvent(_msgSender(),_etherAmount);
+        emit withdrawalEvent(_msgSender(), _etherAmount);
         payable(msg.sender).transfer(_etherAmount);
     }
 }
