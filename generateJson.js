@@ -109,7 +109,7 @@ const deviation = (min, max, skew = 1, notFloat = true) => {
   return notFloat ? parseInt(num) : num;
 };
 
-const BACTCHSIZE = 1000;
+const BACTCHSIZE = 5000;
 
 const abilities = Array(BACTCHSIZE)
   .fill(false)
