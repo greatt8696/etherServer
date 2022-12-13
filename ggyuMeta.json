@@ -1,0 +1,19 @@
+{
+  "name": "#0",
+  "description": "죠르디는 귀엽다?",
+  "external_url": "http://localhost/metadatas/0",
+  "image": "http://localhost/images/0",
+  "attributes": [
+    { "trait_type": "gender", "value": "male" },
+    { "trait_type": "level", "value": "Legendary" },
+    { "display_type": "number", "trait_type": "generation", "value": 0 },
+    { "display_type": "number", "trait_type": "attack", "value": 0 },
+    { "display_type": "number", "trait_type": "defence", "value": 0 },
+    { "display_type": "number", "trait_type": "magic_attack", "value": 0 },
+    { "display_type": "number", "trait_type": "magic_defence", "value": 0 },
+    { "display_type": "number", "trait_type": "speed", "value": 0 },
+    { "display_type": "number", "trait_type": "hp", "value": 0 },
+    { "display_type": "number", "trait_type": "ranking", "value": 0 },
+    { "trait_type": "base_color", "value": "white" }
+  ]
+}

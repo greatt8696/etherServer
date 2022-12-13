@@ -3,7 +3,7 @@ const { transactionSchema } = require("./Transaction");
 const { Schema } = mongoDb;
 
 const blockSchema = new Schema({
-  number: { type: String, index: true, unique: true },
+  number: { type: Number, index: true, unique: true },
   hash: { type: String },
   parentHash: { type: String },
   mixHash: { type: String },

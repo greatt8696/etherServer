@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const ether = require("./routers/ether");
+const api = require("./routers/api");
 const web3Manager = require("./web3/web3Manager");
 const { connectDb, initDb } = require("./models");
 const { SERVER_PORT } = process.env;
@@ -30,3 +31,4 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/web3", ether);
+app.use("/api", api);
