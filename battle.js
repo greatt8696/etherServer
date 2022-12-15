@@ -1,4 +1,4 @@
-class Uint {
+class unit {
   data = {
     status: {
       atk: 10,
@@ -52,6 +52,7 @@ class Uint {
       stamina: 0,
       attackAble: true,
       MultiAttack: true,
+      alive: true,
       stun: false,
       slow: false,
       burn: false,
@@ -65,16 +66,22 @@ class Uint {
     this.data.equipment = [...equipment];
     this.data.position = { ...position };
     this.setId();
-    const newStatus = this.setStatusByEquip(this.getStatus(), this.getEquip());
+    const newStatus = this.setStatusWithEquip(
+      this.getStatus(),
+      this.getEquip()
+    );
     this.update({ status: newStatus });
     this.initFrame();
     this.initStamina();
   }
+
   checkAlive = () => {
     return this.data.status.hp > 0;
   };
+
   checkCondition = () => {};
-  setStatusByEquip = (status, equipments) => {
+
+  setStatusWithEquip = (status, equipments) => {
     const statusLabels = Object.keys(status); // atk, def, spd, hp
     const newStatus = { ...status };
     statusLabels.forEach((label) => {
@@ -126,20 +133,25 @@ class Uint {
   getCondition = () => {
     return { ...this.data.condition };
   };
-  isDead = () => {
-    return this.uint.status.hp <= 0;
-  };
-  getStamina = () => {
-    return this.uint.condition.stamina;
-  };
+  isAlive = () => this.data.status.hp > 0;
+  getStamina = () => this.data.condition.stamina;
   setStamina = (stamina) => {
-    this.uint.condition.stamina = stamina;
+    this.data.condition.stamina = stamina;
   };
+  chargeStamina = () => {
+    this.data.condition.stamina += this.data.status.spd;
+  };
+
   setId = () => {
     this.id = parseInt(Math.random() * 999).toString();
   };
-  getId = () => {
-    this.id;
+  getId = () => this.id;
+
+  beAttacked = (calcedDamage) => {
+    const hp = this.data.status.hp;
+    const decreasedHp = calcedDamage > hp ? 0 : hp - calcedDamage;
+    this.data.status.hp = decreasedHp;
+    if (decreasedHp === 0) this.data.condition.alive = false;
   };
 }
 
@@ -189,6 +201,10 @@ const POSITION = [
     team: "blue",
     position: 1,
   },
+  {
+    team: "blue",
+    position: 2,
+  },
 ];
 const STATUS = {
   atk: 10,
@@ -196,14 +212,19 @@ const STATUS = {
   spd: 10,
   hp: 100,
 };
-const aaa = new Uint({
+const aaa = new unit({
   equipment: EQUIP,
   position: POSITION[0],
   status: STATUS,
 });
-const bbb = new Uint({
+const bbb = new unit({
   equipment: EQUIP.splice(3, 1),
   position: POSITION[1],
+  status: STATUS,
+});
+const ccc = new unit({
+  equipment: EQUIP.splice(3, 1),
+  position: POSITION[2],
   status: STATUS,
 });
 
@@ -230,14 +251,7 @@ class Battle {
   setAllUnits = (units) => {
     this.allUnits = units;
   };
-  isDead = ({ status }) => {
-    console.log("isDead", status);
-    if (status.hp <= 0) {
-      console.log(`${status.team}가 쓰러졌쟈나 ㅠㅅㅠ`);
-      return true;
-    }
-    return false;
-  };
+
   updateStatus = (status) => {
     this.status = { ...status };
   };
@@ -269,44 +283,52 @@ class Battle {
   getAllUnits = () => {
     return this.allUnits;
   };
-  attack = (me, you) => {
-    const beforeMeData = { ...me.data };
-    const beforeYouData = { ...you.data };
-    const defenceRatio = 1 / (1 + beforeYouData.status.def);
 
-    const damage = beforeMeData.status.atk * defenceRatio;
-    if (damage === 0) damage = 1;
-    const decreaceDamage = (damage / (beforeMeData.status.atk - damage)) * 100;
+  attack = (red, blue) => {
+    const redStatus = red.getStatus();
+    const blueStatus = blue.getStatus();
+    const defenceRatio = 1 / (1 + blueStatus.def);
 
-    beforeMe.resetStamina();
+    const damage = redStatus.atk * defenceRatio;
+    const decreaceDamage = (damage / (redStatus.atk - damage)) * 100;
+    const normalizedDamage =
+      decreaceDamage === 0 ? 1 : Math.round(decreaceDamage);
+
+    blue.beAttacked(normalizedDamage);
+    red.setStamina(0);
 
     console.log(
-      `${beforeMe.team}이 ${
-        beforeYou.team
-      }을 ${damage}로 공격했댜! (방어율 : ${decreaceDamage.toFixed(2)}%)`
+      `${red.getPosition().team}이 ${
+        blue.getPosition().team
+      }을 ${normalizedDamage}로 공격했댜! (hp : ${blue.getStatus().hp})`
     );
 
-    return [afterMe, afterYou];
+    return [red, blue];
   };
+
   searchTarget = (unit, allUnits) => {
     const myId = unit.getId();
     const myTeam = unit.getTeam();
-
-    const enemies = allUnits.filter((Unit) => {
-      return Unit.getTeam() === myTeam;
-    });
-    console.log(enemy[0].getPosition());
-  }; // [Unit, Unit, Unit], [Unit, Unit, Unit]
-  scence = () => {
-    const allUnits = this.getAllUnits();
-    const sortByStamina = allUnits.sort(
-      (prev, curr) => curr.data.condition.stamina - prev.data.condition.stamina,
+    const enemies = allUnits.filter((Unit) => Unit.getTeam() !== myTeam);
+    const nearByEnemies = enemies.sort(
+      (prev, curr) => prev.data.position - curr.data.position,
       0
     );
-    // console.log(sortByStamina.map((unit) => unit.data.condition.stamina));
+    const aliveEnemies = nearByEnemies.filter((enemy) => enemy.isAlive());
+    return aliveEnemies;
+  }; // [Unit, Unit, Unit], [Unit, Unit, Unit]
 
-    // console.log(allUnits.map((unit) => unit.checkAlive()));
-    this.searchTarget(sortByStamina[0], allUnits);
+  scence = () => {
+    const allUnits = this.getAllUnits();
+    for (let idx = 0; idx < 5; idx++) {
+      const sortByStamina = allUnits.sort(
+        (prev, curr) => curr.getStamina() - prev.getStamina(),
+        0
+      );
+      const target = this.searchTarget(sortByStamina[0], allUnits);
+      const [newRed, newBlue] = this.attack(sortByStamina[0], target[0]);
+      //console.log(newRed.getStatus(), newBlue.getStatus());
+    }
   };
 }
 
@@ -316,7 +338,7 @@ class Battle {
 //   })
 // );
 
-const newBattle = new Battle([aaa, bbb]);
+const newBattle = new Battle([aaa, bbb, ccc]);
 
 newBattle.scence();
 
