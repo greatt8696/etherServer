@@ -1,4 +1,5 @@
 class unit {
+  id = "";
   data = {
     status: {
       atk: 10,
@@ -45,7 +46,7 @@ class unit {
     ],
     position: {
       team: "red",
-      position: 1,
+      grid: 1,
       frame: 0,
     },
     condition: {
@@ -112,6 +113,9 @@ class unit {
     });
     this.data = newUnit;
   };
+
+  calcEffectToStaus = () => {};
+
   addFrame = () => {
     this.data.position.frame += 1;
   };
@@ -127,6 +131,9 @@ class unit {
   getEquip = () => {
     return [...this.data.equipment];
   };
+
+  getGrid = () => this.data.position.grid;
+
   getPosition = () => {
     return { ...this.data.position };
   };
@@ -145,6 +152,7 @@ class unit {
   setId = () => {
     this.id = parseInt(Math.random() * 999).toString();
   };
+
   getId = () => this.id;
 
   beAttacked = (calcedDamage) => {
@@ -192,6 +200,81 @@ const EQUIP = [
     set: "용사뀨",
   },
 ];
+
+const SET_EFFECT = {
+  용사뀨: (partsNum) => {
+    const defaultValue = {
+      atk: 50,
+      def: 50,
+      spd: 50,
+      hp: 50,
+    };
+
+    let debuff = 1;
+    switch (partsNum) {
+      case partsNum >= 2 && partsNum < 4:
+        debuff = 1 / 5;
+        break;
+      case partsNum >= 4 && partsNum < 6:
+        debuff = 2 / 5;
+        break;
+      case 6 === partsNum:
+        debuff = 1;
+        break;
+      default:
+        break;
+    }
+
+    const buffValue = {
+      status: {
+        atk: defaultValue.atk * debuff,
+        def: defaultValue.def * debuff,
+        spd: defaultValue.spd * debuff,
+        hp: defaultValue.hp * debuff,
+      },
+      condition: {},
+    };
+
+    return buffValue;
+  },
+
+  초심자: (partsNum) => {
+    const defaultValue = {
+      atk: 100,
+      def: 100,
+      spd: 100,
+      hp: 100,
+    };
+
+    let debuff = 1;
+    switch (partsNum) {
+      case partsNum >= 2 && partsNum < 4:
+        debuff = 1 / 5;
+        break;
+      case partsNum >= 4 && partsNum < 6:
+        debuff = 2 / 5;
+        break;
+      case 6 === partsNum:
+        debuff = 1;
+        break;
+      default:
+        break;
+    }
+
+    const buffValue = {
+      status: {
+        atk: defaultValue.atk * debuff,
+        def: defaultValue.def * debuff,
+        spd: defaultValue.spd * debuff,
+        hp: defaultValue.hp * debuff,
+      },
+      condition: {},
+    };
+
+    return buffValue;
+  },
+};
+
 const POSITION = [
   {
     team: "red",
@@ -206,22 +289,26 @@ const POSITION = [
     position: 2,
   },
 ];
+
 const STATUS = {
   atk: 10,
   def: 10,
   spd: 10,
   hp: 100,
 };
+
 const aaa = new unit({
   equipment: EQUIP,
   position: POSITION[0],
   status: STATUS,
 });
+
 const bbb = new unit({
   equipment: EQUIP.splice(3, 1),
   position: POSITION[1],
   status: STATUS,
 });
+
 const ccc = new unit({
   equipment: EQUIP.splice(3, 1),
   position: POSITION[2],
@@ -232,18 +319,18 @@ class Battle {
   frame = 0;
   allUnits = [];
   team = {};
-
   constructor(units) {
     const seperatedTeam = this.seperateTeam(units);
     this.setTeam(seperatedTeam);
     this.setAllUnits(units);
   }
   checkTeamAlive = (units) => {
+    console.log("units", units);
     const team = units[0].getTeam();
-    const teamsAlive = units
+    const teamAlive = units
       .map((unit) => unit.checkAlive())
       .every((unitAlive) => unitAlive);
-    return { team, teamsAlive };
+    return { team, teamAlive };
   };
   setTeam = (team) => {
     this.team = team;
@@ -251,12 +338,13 @@ class Battle {
   setAllUnits = (units) => {
     this.allUnits = units;
   };
-
   updateStatus = (status) => {
     this.status = { ...status };
   };
-  addStamina = () => {
-    this.status.stamina += this.status.spd;
+  chargeAllUnitsStamina = (units) => {
+    units.forEach((unit) => {
+      unit.chargeStamina();
+    });
   };
   nextFrame = () => {
     this.frame += 1;
@@ -284,51 +372,97 @@ class Battle {
     return this.allUnits;
   };
 
-  attack = (red, blue) => {
-    const redStatus = red.getStatus();
-    const blueStatus = blue.getStatus();
-    const defenceRatio = 1 / (1 + blueStatus.def);
+  declareWinner = (seperatedTeam) => {
+    const noneWinner = false;
 
-    const damage = redStatus.atk * defenceRatio;
-    const decreaceDamage = (damage / (redStatus.atk - damage)) * 100;
+    const teamsLabels = Object.keys(seperatedTeam);
+
+    const checkClearedTeam = teamsLabels.map((team) =>
+      seperatedTeam[team].every((unit) => unit.isAlive() === false)
+    );
+
+    const allClearedTeam = checkClearedTeam.indexOf(true);
+
+    if (allClearedTeam < 0) return noneWinner;
+
+    const winningTeam = teamsLabels.find((_, idx) => idx !== allClearedTeam);
+
+    return winningTeam;
+  };
+
+  attack = (attacker, defencer) => {
+    if (attacker.getStamina() === 0) return;
+    const attackerStatus = attacker.getStatus();
+    const defencerStatus = defencer.getStatus();
+    const defenceRatio = 1 / (1 + defencerStatus.def);
+
+    const damage = attackerStatus.atk * defenceRatio;
+    const decreaceDamage = (damage / (attackerStatus.atk - damage)) * 100;
     const normalizedDamage =
       decreaceDamage === 0 ? 1 : Math.round(decreaceDamage);
 
-    blue.beAttacked(normalizedDamage);
-    red.setStamina(0);
+    defencer.beAttacked(normalizedDamage);
+    attacker.setStamina(0);
+
+    console.log(attacker.getStamina());
 
     console.log(
-      `${red.getPosition().team}이 ${
-        blue.getPosition().team
-      }을 ${normalizedDamage}로 공격했댜! (hp : ${blue.getStatus().hp})`
+      `${attacker.getPosition().team}이 ${
+        defencer.getPosition().team
+      }을 ${normalizedDamage}로 공격했댜! (hp : ${defencer.getStatus().hp})`
     );
-
-    return [red, blue];
   };
 
+  newCheckTeamAlive = (units) => {};
+
+  // [Unit, Unit, Unit], [Unit, Unit, Unit]
   searchTarget = (unit, allUnits) => {
     const myId = unit.getId();
     const myTeam = unit.getTeam();
     const enemies = allUnits.filter((Unit) => Unit.getTeam() !== myTeam);
     const nearByEnemies = enemies.sort(
-      (prev, curr) => prev.data.position - curr.data.position,
+      (prev, curr) => prev.getGrid() - curr.getGrid(),
       0
     );
     const aliveEnemies = nearByEnemies.filter((enemy) => enemy.isAlive());
     return aliveEnemies;
-  }; // [Unit, Unit, Unit], [Unit, Unit, Unit]
+  };
 
   scence = () => {
     const allUnits = this.getAllUnits();
-    for (let idx = 0; idx < 5; idx++) {
+    const seperatedTeamObj = this.seperateTeam(allUnits);
+
+    let winner;
+
+    do {
       const sortByStamina = allUnits.sort(
         (prev, curr) => curr.getStamina() - prev.getStamina(),
         0
       );
-      const target = this.searchTarget(sortByStamina[0], allUnits);
-      const [newRed, newBlue] = this.attack(sortByStamina[0], target[0]);
-      //console.log(newRed.getStatus(), newBlue.getStatus());
-    }
+
+      const attacker = sortByStamina[0];
+      const defencers = allUnits.filter(
+        (unit) => unit.id !== attacker.id && unit.getId() !== attacker.getId()
+      );
+
+      const target = this.searchTarget(attacker, defencers);
+
+      this.attack(attacker, target[0]);
+
+      this.chargeAllUnitsStamina(allUnits);
+
+      winner = this.declareWinner(seperatedTeamObj);
+      console.log(
+        "blue",
+        seperatedTeamObj.blue.map((unit) => unit.data.status.hp)
+      );
+      console.log(
+        "red",
+        seperatedTeamObj.red.map((unit) => unit.data.status.hp)
+      );
+    } while (winner === false);
+
+    console.log("winner", winner);
   };
 }
 
