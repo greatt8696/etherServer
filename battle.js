@@ -121,27 +121,13 @@ class unit {
   addFrame = () => {
     this.data.position.frame += 1;
   };
-  getTeam = () => {
-    return this.data.position.team;
-  };
-  getUnit = () => {
-    return { ...this.data };
-  };
-  getStatus = () => {
-    return { ...this.data.status };
-  };
-  getEquip = () => {
-    return [...this.data.equipment];
-  };
-
+  getTeam = () => this.data.position.team;
+  getUnit = () => ({ ...this.data });
+  getStatus = () => ({ ...this.data.status });
+  getEquip = () => [...this.data.equipment];
   getGrid = () => this.data.position.grid;
-
-  getPosition = () => {
-    return { ...this.data.position };
-  };
-  getCondition = () => {
-    return { ...this.data.condition };
-  };
+  getPosition = () => ({ ...this.data.position });
+  getCondition = () => ({ ...this.data.condition });
   isAlive = () => this.data.status.hp > 0;
   getStamina = () => this.data.condition.stamina;
   setStamina = (stamina) => {
@@ -218,9 +204,8 @@ class Battle {
     this.frame += 1;
     this.addStamina();
   };
-  compareStamina = (me, you) => {
-    return me.status.stamina >= you.status.stamina ? [me, you] : [you, me];
-  };
+  compareStamina = (me, you) =>
+    me.status.stamina >= you.status.stamina ? [me, you] : [you, me];
   nextFrame = () => {
     this.frame += 1;
   };
@@ -263,7 +248,6 @@ class Battle {
     const attackerStatus = attacker.getStatus();
     const defencerStatus = defencer.getStatus();
     const defenceRatio = 1 / (1 + defencerStatus.def);
-
     const damage = attackerStatus.atk * defenceRatio;
     const decreaceDamage = (damage / (attackerStatus.atk - damage)) * 100;
     const normalizedDamage =
@@ -299,20 +283,16 @@ class Battle {
   scence = () => {
     const allUnits = this.getAllUnits();
     const seperatedTeamObj = this.seperateTeam(allUnits);
-
     let winner;
-
     do {
       const sortByStamina = allUnits.sort(
-        (prev, curr) => curr.getStamina() - prev.getStamina(),
+        (prevUnit, currUnit) => currUnit.getStamina() - prevUnit.getStamina(),
         0
       );
-
       const attacker = sortByStamina[0];
       const defencers = allUnits.filter(
         (unit) => unit.id !== attacker.id && unit.getId() !== attacker.getId()
       );
-
       const target = this.searchTarget(attacker, defencers);
 
       this.attack(attacker, target[0]);
@@ -329,24 +309,12 @@ class Battle {
         seperatedTeamObj.red.map((unit) => unit.data.status.hp)
       );
     } while (winner === false);
-
     console.log("winner", winner);
   };
 }
-
-// console.log(
-//   allUnits.map((unit) => {
-//     return [unit.data.position, unit.data.status, unit.data.condition];
-//   })
-// );
 
 const newBattle = new Battle([aaa, bbb, ccc]);
 
 newBattle.scence();
 
-// console.log(newBattle.team);
-
-// console.log([true, false]);
-// console.log([true, false].every((isAlive) => isAlive));
-// console.log([true, true]);
-// console.log([true, true].every((isAlive) => isAlive));
+console.log(aaa.getUnit1());

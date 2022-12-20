@@ -122,22 +122,3 @@
 // }
 
 // console.log(me.frame);
-
-const str =
-  "1234567890abcdefg1234567890abcdefg1234567890abcdefg1234567890abcdefg1234567890abcdefg1234567890abcdefg1234567890abcdefg1234567890abcdefg1234567890abcdefg1234567890abcdefg1234567890abcdefg1234567890abcdefg1234567890abcdefg1234567890abcdefg1234567890abcdefg1234567890abcdefg1234567890abcdefg1234567890abcdefg";
-
-// console.log(str.slice(-1));
-
-// console.log(str.split(""));
-
-console.log(
-  str
-    .split("")
-    .map((_, idx, arr) => arr[arr.length - idx - 1])
-    .join("")
-);
-
-str
-  .split("")
-  .map((_, idx, arr) => arr[arr.length - idx - 1])
-  .join("");
