@@ -45,3 +45,4 @@ contract GgyuNFT is ERC721 {
 
     constructor() ERC721("GgyuNFT", "GGF") {}
 }
+ 
