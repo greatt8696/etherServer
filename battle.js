@@ -119,27 +119,13 @@ class unit {
   addFrame = () => {
     this.data.position.frame += 1;
   };
-  getTeam = () => {
-    return this.data.position.team;
-  };
-  getUnit = () => {
-    return { ...this.data };
-  };
-  getStatus = () => {
-    return { ...this.data.status };
-  };
-  getEquip = () => {
-    return [...this.data.equipment];
-  };
-
+  getTeam = () => this.data.position.team;
+  getUnit = () => ({ ...this.data });
+  getStatus = () => ({ ...this.data.status });
+  getEquip = () => [...this.data.equipment];
   getGrid = () => this.data.position.grid;
-
-  getPosition = () => {
-    return { ...this.data.position };
-  };
-  getCondition = () => {
-    return { ...this.data.condition };
-  };
+  getPosition = () => ({ ...this.data.position });
+  getCondition = () => ({ ...this.data.condition });
   isAlive = () => this.data.status.hp > 0;
   getStamina = () => this.data.condition.stamina;
   setStamina = (stamina) => {
@@ -462,3 +448,5 @@ class Battle {
 const newBattle = new Battle([aaa, bbb, ccc]);
 
 newBattle.scence();
+
+console.log(aaa.getUnit1());

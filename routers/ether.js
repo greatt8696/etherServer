@@ -25,3 +25,5 @@ router.get("/getEvent", async (req, res) => {
 });
 
 module.exports = router;
+
+const face = ["smile", ""];

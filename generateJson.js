@@ -13,6 +13,7 @@ const ABILITY = {
   speed: [1, 22, 1],
   hp: [100, 800, 1],
 };
+
 const BACKGROUND = [
   "white",
   "red",
@@ -50,12 +51,15 @@ const abilityLabels = Object.keys(ABILITY);
 }
  */
 
-const name = (name) => ({ name: `#${name}` });
-const description = (description) => ({ description: `${description}` });
-const externalUrl = (id, baseUrl = "http://localhost:3000/api/metadatas/") => ({
+const makeName = (name) => ({ name: `#${name}` });
+const makeDescription = (description) => ({ description: `${description}` });
+const makeExternalUrl = (
+  id,
+  baseUrl = "http://localhost:3000/api/metadatas/"
+) => ({
   external_url: baseUrl.concat(id),
 });
-const image = (id, baseUrl = "http://localhost:3000/api/images/") => ({
+const makeImage = (id, baseUrl = "http://localhost:3000/api/images/") => ({
   image: baseUrl.concat(id),
 });
 
@@ -79,19 +83,19 @@ const partsOfAttributes = ({ trait_type, value, isNumber = false }) => {
   return parts;
 };
 
-const attributes = (attributes) => {
+const makeAttributes = (attributes) => {
   return { attributes: attributes };
 };
 
-const baseColor = (base_color) => {
+const makeBaseColor = (base_color) => {
   return { trait_type: "base_color", value: base_color };
 };
 
-const face = (face) => {
+const makeFace = (face) => {
   return { trait_type: "face", value: face };
 };
 
-const deviation = (min, max, skew = 1, notFloat = true) => {
+const makeDeviation = (min, max, skew = 1, notFloat = true) => {
   let u = 0,
     v = 0;
   while (u === 0) u = Math.random(); //Converting [0,1) to (0,1)
@@ -99,8 +103,8 @@ const deviation = (min, max, skew = 1, notFloat = true) => {
   let num = Math.sqrt(-9.0 * Math.log(u)) * Math.cos(9.0 * Math.PI * v);
 
   num = num / 10.0 + 0.5; // Translate to 0 -> 1
-  if (num > 1 || num < 0)
-    num = deviation(min, max, skew); // resample between 0 and 1 if out of range
+  if (num > 1 || num < 0) num = makeDeviation(min, max, skew);
+  // resample between 0 and 1 if out of range
   else {
     num = Math.pow(num, skew); // Skew
     num *= max - min; // Stretch to fill range
@@ -116,7 +120,7 @@ const abilities = Array(BACTCHSIZE)
   .map(() => {
     return abilityLabels.map((label) => {
       const [min, max, skew] = ABILITY[label];
-      const randValue = deviation(min, max, skew);
+      const randValue = makeDeviation(min, max, skew);
       const input = {
         trait_type: label,
         value: randValue,
@@ -129,8 +133,8 @@ const abilities = Array(BACTCHSIZE)
 const addedAbilities = abilities.map((ability) => {
   return [
     ...ability,
-    baseColor(randomChoice(BACKGROUND)),
-    face(randomChoice(FACE)),
+    makeBaseColor(randomChoice(BACKGROUND)),
+    makeFace(randomChoice(FACE)),
   ];
 });
 
@@ -138,13 +142,12 @@ const metadatas = Array(BACTCHSIZE)
   .fill(false)
   .map((_, idx) => {
     const test = {
-      ...name(idx),
-      ...description(`#${idx}의 테스트 내용입니댜-`),
-      ...externalUrl(idx),
-      ...image(randomChoice(getImagesList())),
-      ...attributes(addedAbilities[idx]),
+      ...makeName(idx),
+      ...makeDescription(`#${idx}의 테스트 내용입니댜-`),
+      ...makeExternalUrl(idx),
+      ...makeImage(randomChoice(getImagesList())),
+      ...makeAttributes(addedAbilities[idx]),
     };
-    if (idx % 100 === 0) console.log((idx / BACTCHSIZE) * 100, "%");
     return test;
   });
 
@@ -154,4 +157,5 @@ const metadatas = Array(BACTCHSIZE)
 metadatas.forEach((metadata, idx) => {
   const metadataToJson = JSON.stringify(metadata);
   fs.writeFileSync(`./metadatas/${idx}.json`, metadataToJson);
+  if (idx % 100 === 0) console.log(parseInt((idx / BACTCHSIZE) * 100), "%");
 });
