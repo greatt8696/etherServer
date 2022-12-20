@@ -16,7 +16,7 @@ const { SERVER_PORT } = process.env;
   web3Manager.autoContractTanscation();
 
   connectDb().then(() => {
-    initDb(web3Manager);
+    // initDb(web3Manager);
   });
 })();
 

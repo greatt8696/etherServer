@@ -2,8 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const PATH = path.resolve("metadatas");
 
-console.log(PATH);
-
 // [min, max, skew]
 const ABILITY = {
   attack: [50, 500, 1],
@@ -38,14 +36,12 @@ const abilityLabels = Object.keys(ABILITY);
   "attributes": [
     { "trait_type": "gender", "value": "male" },
     { "trait_type": "level", "value": "Legendary" },
-
     { "display_type": "number", "trait_type": "attack", "value": 0 },         50  ~ 500
     { "display_type": "number", "trait_type": "defence", "value": 0 },        30  ~ 300
     { "display_type": "number", "trait_type": "magic_attack", "value": 0 },   50  ~ 500
     { "display_type": "number", "trait_type": "magic_defence", "value": 0 },  30  ~ 300
     { "display_type": "number", "trait_type": "speed", "value": 0 },          1   ~ 22
     { "display_type": "number", "trait_type": "hp", "value": 0 },             100 ~ 800 
-
     { "trait_type": "base_color", "value": "white" }
   ]
 }
@@ -59,7 +55,7 @@ const makeExternalUrl = (
 ) => ({
   external_url: baseUrl.concat(id),
 });
-const makeImage = (id, baseUrl = "http://localhost:3000/api/images/") => ({
+const makeImageUrl = (id, baseUrl = "http://localhost:3000/api/images/") => ({
   image: baseUrl.concat(id),
 });
 
@@ -130,13 +126,11 @@ const abilities = Array(BACTCHSIZE)
     });
   });
 
-const addedAbilities = abilities.map((ability) => {
-  return [
-    ...ability,
-    makeBaseColor(randomChoice(BACKGROUND)),
-    makeFace(randomChoice(FACE)),
-  ];
-});
+const addedAbilities = abilities.map((ability) => [
+  ...ability,
+  makeBaseColor(randomChoice(BACKGROUND)),
+  makeFace(randomChoice(FACE)),
+]);
 
 const metadatas = Array(BACTCHSIZE)
   .fill(false)
@@ -145,17 +139,19 @@ const metadatas = Array(BACTCHSIZE)
       ...makeName(idx),
       ...makeDescription(`#${idx}의 테스트 내용입니댜-`),
       ...makeExternalUrl(idx),
-      ...makeImage(randomChoice(getImagesList())),
+      ...makeImageUrl(randomChoice(getImagesList())),
       ...makeAttributes(addedAbilities[idx]),
     };
     return test;
   });
 
-// console.log(JSON.stringify(metadatas));
-// console.log(metadatas);
-
 metadatas.forEach((metadata, idx) => {
   const metadataToJson = JSON.stringify(metadata);
   fs.writeFileSync(`./metadatas/${idx}.json`, metadataToJson);
-  if (idx % 100 === 0) console.log(parseInt((idx / BACTCHSIZE) * 100), "%");
+  if (idx % 10 === 0)
+    console.log(
+      `JSON : ${idx}개/${BACTCHSIZE}개`,
+      parseInt((idx / BACTCHSIZE) * 100),
+      "%"
+    );
 });

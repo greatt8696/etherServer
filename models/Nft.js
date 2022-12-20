@@ -22,6 +22,6 @@ blockSchema.statics.deleteAll = function () {
   return this.deleteMany({});
 };
 
-const Block = mongoDb.model("block", blockSchema);
+const Nft = mongoDb.model("nft", blockSchema);
 
-module.exports = { Block };
+module.exports = { Nft };
